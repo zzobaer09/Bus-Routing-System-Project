@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <string.h>
                         // struct
 struct route{
     char bus[20][10][20];
