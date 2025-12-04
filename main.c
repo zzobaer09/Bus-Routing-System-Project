@@ -78,7 +78,7 @@ int main() {
      
     Route AllRouteAndBus = {
         {
-            {"bus1","bus2"},
+            {"bus1","bus2","bus5"},
             {"bus3","bus4"}
         },
         {
