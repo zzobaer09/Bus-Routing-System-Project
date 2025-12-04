@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-
+                        // struct
 struct route{
     char bus[20][10][20];
     char len[20][30][20];
@@ -8,7 +8,7 @@ struct route{
 
 typedef struct route Route;
 
-
+                        //functions
 void route_finder(char from[], char to[], char returnarr[]){
     
     char *len[100][100][100] = {
@@ -71,8 +71,11 @@ void All_Bus_and_len_print(Route test){
 }
 
 
+
+
+
 int main() {
-    
+     
     Route AllRouteAndBus = {
         {
             {"bus1","bus2"},
@@ -85,7 +88,7 @@ int main() {
     };
 
 
-    char bus_name[999];
+    //char bus_name[999];
     //route_finder("mirpur","jomuna",bus_name);
     
     All_Bus_and_len_print(AllRouteAndBus);
