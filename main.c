@@ -1,6 +1,15 @@
-// Online C compiler to run C program online
 #include <stdio.h>
-void route(char from[], char to[], char returnarr[]){
+
+
+struct route{
+    char bus[20][10][20];
+    char len[20][30][20];
+};
+
+typedef struct route Route;
+
+
+void route_finder(char from[], char to[], char returnarr[]){
     
     char *len[100][100][100] = {
         {{"bus1","bus2"},{"mirpur","kalshi","ecb","jomuna"}},
@@ -44,10 +53,18 @@ void route(char from[], char to[], char returnarr[]){
         }   
     }
 };
+
+
 int main() {
     
+    Route AllRouteAndBus = {
+        {{"bus1","bus2"},{"bus3","bus4"}},
+        {{"mirpur","kalshi","ecb","jomuna"},{"rampura","badda","gulshan","jomuna"}}
+    };
+
+
     char bus_name[999];
-    route("mirpur","jomuna",bus_name);
+    route_finder("mirpur","jomuna",bus_name);
     
     
     return 0;
