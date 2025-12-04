@@ -54,18 +54,38 @@ void route_finder(char from[], char to[], char returnarr[]){
     }
 };
 
+void test_struct_working(Route test){
+    for (int i = 0; i < 2; i++)
+    {
+        for (int j = 0; j < 10; j++)
+        {
+            printf("%s->%s\n",test.bus[i][j],test.len[i][j]);
+
+        }
+        
+    }
+    
+}
+
 
 int main() {
     
     Route AllRouteAndBus = {
-        {{"bus1","bus2"},{"bus3","bus4"}},
-        {{"mirpur","kalshi","ecb","jomuna"},{"rampura","badda","gulshan","jomuna"}}
+        {
+            {"bus1","bus2"},
+            {"bus3","bus4"}
+        },
+        {
+            {"mirpur","kalshi","ecb","jomuna"},
+            {"rampura","badda","gulshan","jomuna"}
+        }
     };
 
 
     char bus_name[999];
-    route_finder("mirpur","jomuna",bus_name);
+    //route_finder("mirpur","jomuna",bus_name);
     
+    test_struct_working(AllRouteAndBus);
     
     return 0;
 }
