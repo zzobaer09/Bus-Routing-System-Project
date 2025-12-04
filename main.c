@@ -54,13 +54,16 @@ void route_finder(char from[], char to[], char returnarr[]){
     }
 };
 
-void test_struct_working(Route test){
+void All_Bus_and_len_print(Route test){
     for (int i = 0; i < 2; i++)
     {
-        for (int j = 0; j < 10; j++)
+        for (int j = 0; j < 2; j++)
         {
-            printf("%s->%s\n",test.bus[i][j],test.len[i][j]);
-
+            for (int k = 0; k < 4; k++)
+            {
+                printf("%s->%s\n",test.bus[i][j],test.len[i][k]);
+            }
+            printf("\n");
         }
         
     }
@@ -85,7 +88,7 @@ int main() {
     char bus_name[999];
     //route_finder("mirpur","jomuna",bus_name);
     
-    test_struct_working(AllRouteAndBus);
+    All_Bus_and_len_print(AllRouteAndBus);
     
     return 0;
 }
