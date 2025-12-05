@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <string.h>
 
 struct route{
     char bus[20][10][20];
@@ -9,13 +9,8 @@ struct route{
 typedef struct route Route;
 
 
-void route_finder(char from[], char to[], char returnarr[]){
-    
-    char *len[100][100][100] = {
-        {{"bus1","bus2"},{"mirpur","kalshi","ecb","jomuna"}},
-        {{"bus3","bus4"},{"rampura","badda","gulshan","jomuna"}}
-    };
-    
+void route_finder(char from[], char to[], char returnarr[],Route R){
+
     int fromflag=-1;
     int toflag=-1;
     
@@ -24,33 +19,34 @@ void route_finder(char from[], char to[], char returnarr[]){
     
     for(int i = 0; i<100;i++){
         for(int j = 0; j<100;j++){
-            for(int k = 0; k<100;k++){
-                
-                if(from==len[i][j][k]){ 
-                   fromflag=1;
-                   from_indx = k;
-                   //printf("%s\n",len[i][j][k]);
-                }
-                
-                if(to==len[i][j][k])
-                {
-                    toflag=1;
-                    to_indx = k;
-                    //printf("%s\n",len[i][j][k]);
-                }
-                
-            } 
-            // if(toflag==1&&fromflag==1) {
-            //     printf("both found ->%s->%s\n",len[i][j][from_indx],len[i][j][to_indx]);
-            //     fromflag=-1;
-            //     toflag=-1;
-                
-            // }
-            if(toflag!=1||fromflag!=1){
-                fromflag=-1;
-                toflag=-1;
+            
+            if(strcmp(from,R.len[i][j])==0){ 
+                fromflag=1;
+                from_indx = j;
+                //printf("%s\n",R[i][j][k]);
+
             }
-        }   
+            
+            if(strcmp(to,R.len[i][j])==0)
+            {
+                toflag=1;
+                to_indx = j;
+                //printf("%s\n",R[i][j][k]);
+
+            }
+            
+        } 
+        if(toflag==1&&fromflag==1) {
+            printf("both found ->%s->%s\n",R.len[i][from_indx],R.len[i][to_indx]);
+            fromflag=-1;
+            toflag=-1;
+            break;
+        }
+        if(toflag!=1||fromflag!=1){
+            fromflag=-1;
+            toflag=-1;
+        }
+  
     }
 };
 
@@ -86,8 +82,8 @@ int main() {
 
 
     char bus_name[999];
-    //route_finder("mirpur","jomuna",bus_name);
-    
+    route_finder("kalshi","ecb",bus_name,AllRouteAndBus);
+    printf("\n\n\n\n\n");
     All_Bus_and_len_print(AllRouteAndBus);
     
     return 0;
